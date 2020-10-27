@@ -1,3 +1,3 @@
-const BASEURL = 'http://open-api.myhelsinki.fi/v1/events/?tags_search='
+const BASEURL = 'https://api.finna.fi/v1/'
 
 export default BASEURL

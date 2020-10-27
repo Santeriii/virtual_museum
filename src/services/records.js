@@ -1,9 +1,9 @@
 import axios from 'axios'
 import BASEURL from './config'
 
-export const getRecords = async (tags) => {
+export const getRecords = async () => {
     const response = await axios.get(
-        BASEURL + '/api/events/fin/10/' + tags,
+        BASEURL + 'search?lookfor=sibelius',
     )
     return response
 }
