@@ -15,51 +15,81 @@ app.use(requestLogger)
 app.use(express.json())
 app.use(cors())
 
-let notes = [
-    {
-        id: 1,
-        content: "HTML is easy",
-        date: "2020-01-10T17:30:31.098Z",
-        important: true
-      },
-      {
-        id: 2,
-        content: "Browser can execute only Javascript",
-        date: "2020-01-10T18:39:34.091Z",
-        important: false
-      },
-      {
-        id: 3,
-        content: "GET and POST are the most important methods of HTTP protocol",
-        date: "2020-01-10T19:20:14.298Z",
-        important: true
-      }
-]
+const mongoose = require('mongoose')
+
+if (process.argv.length<3) {
+    console.log('give password as an argument')
+    process.exit(1)
+}
+
+const password = process.argv[2]
+
+const url =
+    `mongodb+srv://fullstack:${password}@cluster0.blvny.mongodb.net/note-app?retryWrites=true&w=majority`
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+
+const noteSchema = new mongoose.Schema({
+    content: String,
+    date: Date,
+    important: Boolean,
+})
+
+noteSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toSring()
+        delete returnedObject._id
+        delete returnedObject.__v
+    }
+})
+
+const Note = mongoose.model('Note', noteSchema)
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello world!</h1>')
 })
 
 app.get('/api/notes', (req, res) => {
-    res.json(notes)
+    Note.find({}).then(notes => {
+        res.json(notes)
+    })
 })
 
-app.get('/api/notes/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const note = notes.find(note => note.id === id)
+app.get('/api/notes/:id', (req, res, next) => {
+    Note.findById(req.params.id)
+        .then(note => {
+            if (note) {
+                res.json(note)
+            } else {
+                res.status(404).end()
+            }
+        })
+        .catch(error => {
+            next(error)
+        })
+})
 
-    if (note) {
-        res.json(note)
-    } else {
-        res.status(404).end()
+app.delete('/api/notes/:id', (req, res, next) => {
+    Note.findByIdAndRemove(req.params.id)
+        .then(result => {
+            res.status(204).end()
+        })
+        .catch(error => next(error))
+})
+
+app.put('/api/notes/:id', (req, res, next) => {
+    const body = req.body
+
+    const note = {
+        content: body.content,
+        important: body.important,
     }
-})
 
-app.delete('/api/notes/:id', (req, res) => {
-    const id = Number(req.params.id)
-    notes = notes.filter(note => note.id !== id)
-
-    res.status(204).end()
+    Note.findByIdAndUpdate(req.params.id, note, { new: true})
+        .then(updatedNote => {
+            res.json(updatedNote)
+        })
+        .catch(error => next(error))
 })
 
 const generateId = () => {
@@ -95,6 +125,18 @@ const unknownEndpoint = (req, res) => {
 }
 
 app.use(unknownEndpoint)
+
+const errorHandler = (error, request, response, next) => {
+    console.error(error.message)
+  
+    if (error.name === 'CastError') {
+      return response.status(400).send({ error: 'malformatted id' })
+    }
+  
+    next(error)
+}
+  
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
