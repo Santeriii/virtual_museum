@@ -17,21 +17,32 @@ app.use(cors())
 
 const mongoose = require('mongoose')
 
-if (process.argv.length<3) {
+if (process.argv.length < 3) {
     console.log('give password as an argument')
     process.exit(1)
 }
 
 const password = process.argv[2]
 
-const url =
-    `mongodb+srv://fullstack:${password}@cluster0.blvny.mongodb.net/note-app?retryWrites=true&w=majority`
+const url = `mongodb+srv://fullstack:${password}@cluster0.blvny.mongodb.net/note-app?retryWrites=true&w=majority`
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+})
 
 const noteSchema = new mongoose.Schema({
-    content: String,
-    date: Date,
+    content: {
+        type: String,
+        minlength: 5,
+        required: true,
+    },
+    date: {
+        type: Date,
+        required: true,
+    },
     important: Boolean,
 })
 
@@ -40,7 +51,7 @@ noteSchema.set('toJSON', {
         returnedObject.id = returnedObject._id.toSring()
         delete returnedObject._id
         delete returnedObject.__v
-    }
+    },
 })
 
 const Note = mongoose.model('Note', noteSchema)
@@ -85,7 +96,7 @@ app.put('/api/notes/:id', (req, res, next) => {
         important: body.important,
     }
 
-    Note.findByIdAndUpdate(req.params.id, note, { new: true})
+    Note.findByIdAndUpdate(req.params.id, note, { new: true })
         .then(updatedNote => {
             res.json(updatedNote)
         })
@@ -93,21 +104,13 @@ app.put('/api/notes/:id', (req, res, next) => {
 })
 
 const generateId = () => {
-    const maxId = notes.length > 0
-        ? Math.max(...notes.map(n => n.id))
-        : 0
+    const maxId = notes.length > 0 ? Math.max(...notes.map(n => n.id)) : 0
     return maxId + 1
 }
 
-app.post('/api/notes', (req, res) => {
+app.post('/api/notes', (req, res, next) => {
     const body = req.body
 
-    if (!body.content) {
-        return res.status(400).json({
-            error: 'content missing'
-        })
-    }
-    
     const note = {
         content: body.content,
         important: body.important || false,
@@ -115,9 +118,12 @@ app.post('/api/notes', (req, res) => {
         id: generateId(),
     }
 
-    notes = notes.concat(note)
-
-    res.json(note)
+    note.save()
+        .then(savedNote => savedNote.toJSON()})
+        .then(savedAndFormattedNote => {
+            res.json(savedAndFormattedNote)
+        })
+        .catch(error => next(error))
 })
 
 const unknownEndpoint = (req, res) => {
@@ -128,14 +134,16 @@ app.use(unknownEndpoint)
 
 const errorHandler = (error, request, response, next) => {
     console.error(error.message)
-  
+
     if (error.name === 'CastError') {
-      return response.status(400).send({ error: 'malformatted id' })
+        return response.status(400).send({ error: 'malformatted id' })
+    } else if (error.name === 'ValidationError') {
+        return response.status(400).send({ error: error.message })
     }
-  
+
     next(error)
 }
-  
+
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
