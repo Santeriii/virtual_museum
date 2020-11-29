@@ -6,6 +6,7 @@ import NavBar from './components/Navbar/navBar.jsx'
 import Home from './components/Home/'
 import Contacts from './components/Contacts/index'
 import Museum from './components/Museum/index'
+import Login from './components/User/Login/index'
 
 export const App = () => {
     return (
@@ -17,6 +18,9 @@ export const App = () => {
                 </Route>
                 <Route path="/contacts">
                     <Contacts />
+                </Route>
+                <Route path="/login">
+                    <Login />
                 </Route>
                 <Route path="/">
                     <Home />
