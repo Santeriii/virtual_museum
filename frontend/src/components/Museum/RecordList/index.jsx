@@ -1,10 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles(theme => ({
     paragraph: {
         fontSize: '90%',
         fontFamily: 'Serif',
+    },
+    divider: {
+        backgroundColor: 'white',
     },
 }))
     
@@ -25,6 +29,7 @@ export default function RecordList({ records }) {
                             <li className={classes.paragraph}>{building.translated}</li>
                         ))}
                         </ul>
+                        <Divider className={classes.divider}/>
                         </>
                     ))}
                 </>
