@@ -43,5 +43,6 @@
   "devDependencies": {
     "cross-env": "^7.0.2",
     "supertest": "^6.0.1"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
