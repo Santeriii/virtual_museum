@@ -60,6 +60,15 @@ export default function Navbar() {
                         </Button>
                     </Link>
 
+                    <Link to="/forum" className={classes.link}>
+                        <Button
+                            data-cy="forumNav"
+                            color="inherit"
+                            className={classes.button_text}>
+                            Foorumi
+                        </Button>
+                    </Link>
+
                     <Link to="/login" className={classes.link}>
                         <Button
                             data-cy="loginNav"

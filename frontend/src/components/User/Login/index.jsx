@@ -79,7 +79,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setErrorMessage('wrong credentials')
+      setErrorMessage('väärä käyttäjänimi tai salasana')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -87,7 +87,6 @@ const App = () => {
   }
 
   const loginForm = () => (
-    <Togglable buttonLabel='login'>
       <LoginForm
         username={username}
         password={password}
@@ -95,7 +94,6 @@ const App = () => {
         handlePasswordChange={({ target }) => setPassword(target.value)}
         handleSubmit={handleLogin}
       />
-    </Togglable>
   )
 
   const noteForm = () => (
@@ -110,32 +108,14 @@ const App = () => {
 
   return (
     <div>
-      <h1>Notes</h1>
       <Notification message={errorMessage} />
 
       {user === null ?
         loginForm() :
         <div>
           <p>{user.name} logged in</p>
-          {noteForm()}
         </div>
       }
-
-      <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
-        </button>
-      </div>
-      <ul>
-        {notesToShow.map((note, i) =>
-          <Note
-            key={i}
-            note={note}
-            toggleImportance={() => toggleImportanceOf(note.id)}
-          />
-        )}
-      </ul>
-
       <Footer />
     </div>
   )

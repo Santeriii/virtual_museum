@@ -44,5 +44,5 @@
     "cross-env": "^7.0.2",
     "supertest": "^6.0.1"
   },
-  "proxy": "https://virtual-museum-backend.herokuapp.com"
+  "proxy": "http://virtual-museum-backend.herokuapp.com/"
 }
