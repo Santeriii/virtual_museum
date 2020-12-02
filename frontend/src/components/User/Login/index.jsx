@@ -7,6 +7,7 @@ import Togglable from './components/Togglable'
 import Footer from './components/Footer'
 import noteService from './services/notes'
 import loginService from './services/login'
+import LoggedIn from './components/LoggedIn'
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -96,6 +97,10 @@ const App = () => {
       />
   )
 
+  const loggedIn = () => (
+    <LoggedIn/>
+  )
+
   const noteForm = () => (
     <Togglable buttonLabel='new note' ref={noteFormRef}>
       <NoteForm createNote={addNote} />
@@ -112,9 +117,7 @@ const App = () => {
 
       {user === null ?
         loginForm() :
-        <div>
-          <p>{user.name} logged in</p>
-        </div>
+        loggedIn()
       }
       <Footer />
     </div>

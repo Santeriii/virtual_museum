@@ -19,7 +19,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Virtuaalimuseo
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -79,7 +79,7 @@ const LoginForm = ({
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Kirjaudu sisään
                     </Typography>
                     <form className={classes.form} noValidate onSubmit={handleSubmit}>
                         <TextField
@@ -87,7 +87,7 @@ const LoginForm = ({
                             margin="normal"
                             required
                             fullWidth
-                            label="Email Address"
+                            label="Käyttäjänimi"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -102,15 +102,11 @@ const LoginForm = ({
                             fullWidth
                             value={password}
                             name="password"
-                            label="Password"
+                            label="Salasana"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                             onChange={handlePasswordChange}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
                         />
                         <Button
                             type="submit"
@@ -119,20 +115,8 @@ const LoginForm = ({
                             variant="contained"
                             color="primary"
                             className={classes.submit}>
-                            Sign In
+                            Kirjaudu sisään
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
                     </form>
                 </div>
                 <Box mt={8}>
