@@ -22,15 +22,17 @@ const useStyles = makeStyles(theme => ({
         textDecoration: 'none',
         color: 'black',
         textShadow: '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
-        fontSize: '200%',
+        fontSize: '240%',
         fontFamily: 'sans',
+        marginRight: '1%',
     },
     button_text: {
         textDecoration: 'none',
         color: 'black',
         textShadow: '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
-        fontSize: '90%',
-        fontFamily: 'sans',
+        fontSize: '80%',
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        letterSpacing: '1px',
     },
     appBar: {
         backgroundImage:

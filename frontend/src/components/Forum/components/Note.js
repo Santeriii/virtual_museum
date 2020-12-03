@@ -1,13 +1,55 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
+import StarIcon from '@material-ui/icons/Star'
+
+const useStyles = makeStyles({
+    root: {
+        minWidth: 275,
+        width: '150%',
+        marginTop: '2%',
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+})
 
 const Note = ({ note, toggleImportance }) => {
-    const label = note.important ? 'poista suosikeista' : 'lisää suosikkeihin'
+    const label = note.important ? <StarIcon /> : <StarBorderIcon />
+    const classes = useStyles()
 
     return (
-        <li className="note">
-            <span>{note.content}</span>
-            <button onClick={toggleImportance}>{label}</button>
-        </li>
+        <Card className={classes.root}>
+            <CardContent>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Kommentti
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    Otsikko
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {note.content}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small" onClick={toggleImportance}>
+                    {label}
+                </Button>
+            </CardActions>
+        </Card>
     )
 }
 
