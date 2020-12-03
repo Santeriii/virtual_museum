@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
+import Footer from './components/Footer'
 
 const useStyles = makeStyles(theme => ({
     text_center: {
@@ -48,6 +49,7 @@ export default function Home() {
                     Yhteystiedot - Tarkastele sivuston luojien ja ylläpitäjien
                     yhteystietoja
                 </p>
+                <Footer />
             </h1>
         </div>
     )

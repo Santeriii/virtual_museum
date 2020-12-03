@@ -37,10 +37,13 @@ const useStyles = makeStyles(theme => ({
       verticalAlign: 'middle',
     },
     sideBySide: {
-      display: 'flex',
+      marginRight: '70%',
+      display: 'inline-block',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
-      verticalAlign: 'middle',
+      alignItems: 'center !important',
+      width: '150%',
+        
     },
     favoriteText: {
       fontSize: '80%',
@@ -146,9 +149,8 @@ export default function Forum() {
                           <p>ladataan...</p>
                         }
                     </ul>
-
-                    <Footer />
                 </p>
+                <Footer />
             </h1>
         </div>
     )

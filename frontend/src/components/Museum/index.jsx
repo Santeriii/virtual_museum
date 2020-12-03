@@ -4,6 +4,7 @@ import { getRecords } from '../../services/records'
 import RecordList from './RecordList'
 import TextField from '@material-ui/core/TextField'
 import SearchIcon from '@material-ui/icons/Search'
+import Footer from './components/Footer'
 
 const useStyles = makeStyles(theme => ({
     rootElement: theme.rootElement,
@@ -70,6 +71,7 @@ export default function Contacts() {
                 <RecordList
                     records={records}
                 />
+                <Footer />
             </h1>
         </div>
     )
