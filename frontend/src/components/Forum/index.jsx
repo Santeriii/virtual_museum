@@ -4,6 +4,9 @@ import Footer from './components/Footer'
 import noteService from './services/notes'
 import NoteForm from './components/NoteForm'
 import Togglable from './components/Togglable'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
+import StarIcon from '@material-ui/icons/Star'
+import Button from '@material-ui/core/Button'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -16,9 +19,32 @@ const useStyles = makeStyles(theme => ({
     rootElement: theme.rootElement,
     backgroundImage: theme.backgroundImage,
     paper: theme.paper,
+    paperLeftAlign: theme.paperLeftAlign,
     paragraph: {
         fontSize: '70%',
         fontFamily: 'Serif',
+    },
+    starFull: {
+      color: 'white',
+      fontSize: '170%',
+      font: 'white',
+      verticalAlign: 'middle',
+    },
+    starBorder: {
+      color: 'white',
+      fontSize: '170%',
+      font: 'white',
+      verticalAlign: 'middle',
+    },
+    sideBySide: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      verticalAlign: 'middle',
+    },
+    favoriteText: {
+      fontSize: '80%',
+      verticalAlign: 'middle',
     },
 }))
 
@@ -89,7 +115,7 @@ export default function Forum() {
 
     return (
         <div className={classes.rootElement}>
-            <h1 className={classes.paper}>
+            <h1 className={classes.paperLeftAlign}>
                 <h1 className={classes.text_center}>Keskustelufoorumi</h1>
                 <p className={classes.paragraph}>
                     {user === null ?
@@ -99,11 +125,13 @@ export default function Forum() {
                             {noteForm()}
                         </div>
                     }
-                    <h1>Kommentit</h1>
+                    <div className={classes.sideBySide}>
+                    <h1 className={classes.sideBySide}>Kommentit</h1>
                     <div>
-                        <button onClick={() => setShowAll(!showAll)}>
-                        näytä {showAll ? 'suosikit' : 'kaikki' }
-                        </button>
+                        <Button onClick={() => setShowAll(!showAll)}>
+                        {showAll ? <h1 className={classes.starBorder}><StarBorderIcon className={classes.starBorder} /><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä kaikki</p></h1> : <h1 className={classes.starFull}><StarIcon className={classes.starFull}/><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä suosikit</p></h1> }
+                        </Button>
+                    </div>
                     </div>
                     <ul>
                         {notesToShow.map((note, i) =>
