@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
+import Footer from './Footer'
 
 const useStyles = makeStyles(theme => ({
     text_center: {
@@ -17,6 +18,11 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
+const logout = () => {
+    window.localStorage.removeItem('loggedNoteappUser')
+    window.location.reload(false)
+}
+
 export default function LoggedIn() {
     const classes = useStyles()
 
@@ -26,10 +32,8 @@ export default function LoggedIn() {
         <div className={classes.rootElement}>
             <h1 className={classes.paper}>
                 <h1 className={classes.text_center}>Tervetuloa {loggedUserJSON.name}!</h1>
-                <button
-                    onClick={() => window.localStorage.removeItem('loggedNoteappUser')}>
-                    kirjaudu ulos
-                </button>
+                <button onClick={logout}>Kirjaudu ulos</button>
+                <Footer />
             </h1>
         </div>
     )

@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div style={footerStyle}>
             <br />
-            <em>React-pohjainen museosovellus, Santeri Einola, 2020</em>
+            <em>@ Virtuaalimuseo, React-sovellus, Santeri Einola 2020</em>
         </div>
     )
 }

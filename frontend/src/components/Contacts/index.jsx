@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import profilePic from '../../images/4a9037a6-7ecb-4ba5-9da6-6c3ebaedb446.jpg'
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Footer from './components/Footer'
 
 const useStyles = makeStyles(theme => ({
     text_center: {
@@ -81,6 +82,7 @@ export default function Contacts() {
                     &nbsp;| &nbsp;Testaaminen: Cypress, Jest, Supertest
                     </Typography><br />
                     <Typography paragraph className={classes.contact}><GitHubIcon className={classes.contact}/> &nbsp;&nbsp;https://github.com/Santeriii</Typography>
+                    <Footer />
                 </CardContent>
             </Card>
         </div>
