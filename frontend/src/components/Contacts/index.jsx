@@ -1,21 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import profilePic from '../../images/4a9037a6-7ecb-4ba5-9da6-6c3ebaedb446.jpg'
-import Collapse from '@material-ui/core/Collapse'
-import PhoneIcon from '@material-ui/icons/Phone';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
@@ -32,9 +23,9 @@ const useStyles = makeStyles(theme => ({
         fontFamily: 'Serif',
     },
     root: {
-        width: '60%',
+        width: '68%',
         position: 'relative',
-        marginLeft: '20%',
+        marginLeft: '16%',
       },
       media: {
         height: 0,
@@ -66,11 +57,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Contacts() {
     const classes = useStyles()
-    const [expanded, setExpanded] = React.useState(false)
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    }
 
     return (
         <div className={classes.rootElement}>
@@ -87,6 +73,7 @@ export default function Contacts() {
                 <img
                     src={profilePic}
                     className={classes.image}
+                    alt='Santeri'
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">

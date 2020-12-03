@@ -129,18 +129,22 @@ export default function Forum() {
                     <h1 className={classes.sideBySide}>Kommentit</h1>
                     <div>
                         <Button onClick={() => setShowAll(!showAll)}>
-                        {showAll ? <h1 className={classes.starBorder}><StarBorderIcon className={classes.starBorder} /><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä kaikki</p></h1> : <h1 className={classes.starFull}><StarIcon className={classes.starFull}/><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä suosikit</p></h1> }
+                        {showAll ? <h1 className={classes.starBorder}><StarBorderIcon className={classes.starBorder} /><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä suosikit</p></h1> : <h1 className={classes.starFull}><StarIcon className={classes.starFull}/><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä kaikki</p></h1> }
                         </Button>
                     </div>
                     </div>
                     <ul>
-                        {notesToShow.map((note, i) =>
+                        {notes && 
+                        notesToShow.map((note, i) =>
                         <Note
                             key={i}
                             note={note}
                             toggleImportance={() => toggleImportanceOf(note.id)}
                         />
                         )}
+                        {notes.length < 1 &&
+                          <p>ladataan...</p>
+                        }
                     </ul>
 
                     <Footer />
