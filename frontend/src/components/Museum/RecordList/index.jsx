@@ -48,7 +48,9 @@ export default function RecordList({ records }) {
 
     return (
         <div>
-            {records && (
+            {records && 
+                <>
+                {records.resultCount > 0 && 
                 <>
                     {records.records.map(record => (
                         <>
@@ -71,8 +73,11 @@ export default function RecordList({ records }) {
                         <Divider className={classes.divider}/>
                         </>
                     ))}
+                </>}
+                {records.resultCount < 1 &&
+                <p className={classes.paragraph}>Ei hakutuloksia</p>}
                 </>
-            )}
+            }
         </div>
     )
 }

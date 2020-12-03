@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { getRecords } from '../../services/records'
 import RecordList from './RecordList'
@@ -37,6 +37,15 @@ export default function Contacts() {
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value)
     }
+
+    useEffect (() => {
+        const getData = async () => {
+            const response = await getRecords('hakutesti')
+            setRecords(response.data)
+        }
+
+        getData()
+    }, [])
 
     const search = () => {
         const getData = async () => {
