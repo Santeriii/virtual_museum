@@ -28,23 +28,25 @@ export default function Home() {
                     Virtuaalimuseon tarjonnasta löydät sisältöä aina kuvataidekokoelmista
                     muinaisesineisiin. Tarjonta kattaa museot ympäri Suomen. Sisältö on
                     koottu kätevästi yhteen paikkaan, jolloin käyttäjän ei tarvitse
-                    selailla usean yksittäisen museosivun välillä. Hauskaa
+                    selailla usean yksittäisen museosivuston välillä. Jokaisen artikkelin osalta tarjontaan artikkelin nimi ja sijaintitiedot
+                    sekä mahdollinen sisältökieli. Hauskaa
                     kulttuurihetkeä!
                     <br />
                     <br />
                     Osat:
                     <br />
                     <br />
-                    Museo - Hae museoiden sisältöä kategorian, sijainnin ja iän
-                    perusteella
+                    Museo - Hae museoiden sisältöä hakukoneen avulla
                     <br />
                     <br />
-                    Kirjaudu - Luo omat käyttäjätunnuksesi, kirjaudu sisään ja tarkastele
-                    omia suosikkilistauksiasi
+                    Foorumi - Keskustele muiden sivoston käyttäjien kanssa
                     <br />
                     <br />
-                    Yhteystiedot - Tarkastele sivuston luojien ja ylläpitäjin
-                    yhteystietoja, anna palautetta sivustosta
+                    Kirjaudu - Kirjaudu sisään ja jätä kommenttisi keskustelufoorumille
+                    <br />
+                    <br />
+                    Yhteystiedot - Tarkastele sivuston luojien ja ylläpitäjien
+                    yhteystietoja
                 </p>
             </h1>
         </div>

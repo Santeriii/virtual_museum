@@ -25,20 +25,34 @@ const useStyles = makeStyles({
     pos: {
         marginBottom: 12,
     },
+    favoriteText: {
+        fontSize: '90%',
+        fontWeight: 'bold',
+    },
 })
 
 const Note = ({ note, toggleImportance }) => {
-    const label = note.important ? <StarIcon /> : <StarBorderIcon />
     const classes = useStyles()
+    const label = note.important ? (
+        <>
+            <StarIcon />
+            <p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;poista suosikeista</p>
+        </>
+    ) : (
+        <>
+            <StarBorderIcon />
+            <p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;lisää suosikkeihin</p>
+        </>
+    )
 
     return (
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Kommentti
+                    käyttäjältä {note.user && note.user.username}
                 </Typography>
                 <Typography variant="h5" component="h2">
-                    Otsikko
+                    {note.heading}
                 </Typography>
                 <Typography variant="body2" component="p">
                     {note.content}

@@ -26,13 +26,13 @@ const useStyles = makeStyles(theme => ({
     },
     starFull: {
       color: 'white',
-      fontSize: '200%',
+      fontSize: '170%',
       font: 'white',
       verticalAlign: 'middle',
     },
     starBorder: {
       color: 'white',
-      fontSize: '200%',
+      fontSize: '170%',
       font: 'white',
       verticalAlign: 'middle',
     },
@@ -40,6 +40,11 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
+      verticalAlign: 'middle',
+    },
+    favoriteText: {
+      fontSize: '80%',
+      verticalAlign: 'middle',
     },
 }))
 
@@ -121,10 +126,10 @@ export default function Forum() {
                         </div>
                     }
                     <div className={classes.sideBySide}>
-                    <h1>Kommentit</h1>
+                    <h1 className={classes.sideBySide}>Kommentit</h1>
                     <div>
                         <Button onClick={() => setShowAll(!showAll)}>
-                        {showAll ? <h1 className={classes.starBorder}>Kaikki <StarBorderIcon className={classes.starBorder} /></h1> : <h1 className={classes.starFull}>Suosikit <StarIcon className={classes.starFull}/></h1> }
+                        {showAll ? <h1 className={classes.starBorder}><StarBorderIcon className={classes.starBorder} /><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä kaikki</p></h1> : <h1 className={classes.starFull}><StarIcon className={classes.starFull}/><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä suosikit</p></h1> }
                         </Button>
                     </div>
                     </div>
