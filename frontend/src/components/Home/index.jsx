@@ -30,7 +30,7 @@ export default function Home() {
                     Virtuaalimuseon tarjonnasta löydät sisältöä aina kuvataidekokoelmista
                     muinaisesineisiin. Tarjonta kattaa museot ympäri Suomen. Sisältö on
                     koottu kätevästi yhteen paikkaan, jolloin käyttäjän ei tarvitse
-                    selailla usean yksittäisen museosivuston välillä. Jokaisen artikkelin osalta tarjontaan artikkelin nimi ja sijaintitiedot
+                    selailla usean yksittäisen museosivuston välillä. Jokaisen artikkelin osalta tarjotaan artikkelin nimi ja sijaintitiedot
                     sekä mahdollinen sisältökieli. Hauskaa
                     kulttuurihetkeä!
                     <br />
