@@ -66,7 +66,6 @@ const App = () => {
         loginForm() :
         loggedIn()
       }
-      <Footer />
     </div>
   )
 }
