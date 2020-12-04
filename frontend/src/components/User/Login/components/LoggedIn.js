@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
 
 const logout = () => {
     window.localStorage.removeItem('loggedNoteappUser')
-    window.location.reload(false)
 }
 
 export default function LoggedIn() {
