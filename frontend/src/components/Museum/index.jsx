@@ -14,19 +14,25 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: 'white',
         display: 'flex',
         flexWrap: 'wrap',
+        boxShadow: '3px 3px 8px #000000',
+        marginRight: '1%',
     },
     search: {
         display: 'flex',
         flexWrap: 'wrap',
     },
     paragraph: {
-        fontSize: '70%',
+        fontSize: '76%',
         fontFamily: 'Serif',
+        textShadow: '2px 2px 4px #000000',
     },
     text_center: {
         color: 'white',
         textAlign: 'center',
-        textShadow: '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+        textShadow: '2px 2px 4px #000000',
+    },
+    boxShadow: {
+        boxShadow: '3px 3px 8px #000000',
     },
 }))
 
@@ -65,7 +71,7 @@ export default function Contacts() {
             <h1 className={classes.paper}>
                 <h1 className={classes.text_center}>Artikkelihaku</h1>
                 <div className={classes.search}>
-                <TextField id="filled-basic" label="Hakusana" variant="filled" className={classes.searchField} onChange={handleSearchTermChange}/><button onClick={search}><SearchIcon /></button>
+                <TextField id="filled-basic" label="Hakusana" variant="filled" className={classes.searchField} onChange={handleSearchTermChange}/><button onClick={search} className={classes.boxShadow}><SearchIcon /></button>
                 <h1 className={classes.paragraph}>Voit kohdistaa hakuja Finna.fi:ssä mukana olevien organisaatioiden eli suomalaisten kirjastojen, arkistojen ja museoiden aineistoihin. Esimerkiksi Suomen kansallisbibliografia Fennica ja kansallisdiskografia Viola ovat mukana rajapinnan kautta tarjottavissa aineistoissa. Rajapinnan ylläpidosta ja kehittämisestä vastaa Kansalliskirjaston kirjastoverkkopalvelut. Rajapintaa koskevat tiedustelut ja palaute: finna-posti AT helsinki.fi</h1>
                 </div>
                 <RecordList

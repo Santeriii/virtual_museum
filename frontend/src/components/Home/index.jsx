@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     text_center: {
         color: 'white',
         textAlign: 'center',
-        textShadow: '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+        textShadow: '2px 2px 4px #000000',
     },
     rootElement: theme.rootElement,
     backgroundImage: theme.backgroundImage,
@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     paragraph: {
         fontSize: '70%',
         fontFamily: 'Serif',
+        textShadow: '2px 2px 4px #000000',
     },
 }))
 

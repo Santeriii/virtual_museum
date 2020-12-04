@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     text_center: {
         color: 'white',
         textAlign: 'center',
-        textShadow: '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black',
+        textShadow: '2px 2px 4px #000000',
     },
     rootElement: theme.rootElement,
     backgroundImage: theme.backgroundImage,
@@ -24,26 +24,29 @@ const useStyles = makeStyles(theme => ({
         fontSize: '70%',
         fontFamily: 'Serif',
     },
+    shadow: {
+      textShadow: '2px 2px 4px #000000',
+    },
     starFull: {
       color: 'white',
       fontSize: '170%',
       font: 'white',
-      verticalAlign: 'middle',
+      display: 'flex',
+      flexDirection: 'row',
+      textShadow: '2px 2px 4px #000000',
     },
     starBorder: {
       color: 'white',
       fontSize: '170%',
       font: 'white',
-      verticalAlign: 'middle',
+      display: 'flex',
+      flexDirection: 'row',
+      textShadow: '2px 2px 4px #000000',
     },
     sideBySide: {
-      marginRight: '70%',
-      display: 'inline-block',
-      flexWrap: 'wrap',
       justifyContent: 'space-between',
-      alignItems: 'center !important',
-      width: '150%',
-        
+      display: 'flex',
+      flexDirection: 'row',
     },
     favoriteText: {
       fontSize: '80%',
@@ -124,12 +127,12 @@ export default function Forum() {
                     {user === null ?
                         <p>Kirjaudu sisään kommentoidaksesi</p> :
                         <div>
-                        <p>Hei {user.name}!</p>
+                        <p className={classes.shadow}>Hei {user.name}!</p>
                             {noteForm()}
                         </div>
                     }
                     <div className={classes.sideBySide}>
-                    <h1 className={classes.sideBySide}>Kommentit</h1>
+                    <h1 className={classes.shadow}>Kommentit</h1>
                     <div>
                         <Button onClick={() => setShowAll(!showAll)}>
                         {showAll ? <h1 className={classes.starBorder}><StarBorderIcon className={classes.starBorder} /><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä suosikit</p></h1> : <h1 className={classes.starFull}><StarIcon className={classes.starFull}/><p className={classes.favoriteText}>&nbsp;&nbsp;&nbsp;näytä kaikki</p></h1> }

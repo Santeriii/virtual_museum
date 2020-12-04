@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
         width: '68%',
         position: 'relative',
         marginLeft: '16%',
+        boxShadow: '3px 3px 8px #000000',
       },
       media: {
         height: 0,
