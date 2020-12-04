@@ -6,9 +6,11 @@ const useStyles = makeStyles(theme => ({
     paragraph: {
         fontSize: '90%',
         fontFamily: 'Arvo',
+        textShadow: '2px 2px 4px #000000',
     },
     divider: {
         backgroundColor: 'white',
+        boxShadow: '5px 5px 2.5px #000000',
     },
     script: {
         fontFamily: "Seaweed Script",
@@ -40,6 +42,21 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         fontSize: '90%',
       },
+      orSpacer: {
+      marginTop: '100px; margin-left:100px; width:400px', 
+      position: 'relative', 
+      
+      mask: { 
+        overflow: 'hidden; height:20px', 
+        after: { 
+          content:'', 
+          display: 'block; margin:-25px auto 0',
+          width: '100%; height:25px',  
+          borderRadius: '125px / 12px',  
+          boxShadow: '0 0 8px black',
+        }
+      }
+    },
 }))
     
 
@@ -55,7 +72,7 @@ export default function RecordList({ records }) {
                     {records.records.map(record => (
                         <>
                         <p className={classes.text}>{record.title}</p>
-                        <p className={classes.paragraph}>tyyppi = {record.formats[0].translated}</p>
+                        <p className={classes.paragraph}>tyyppi : {record.formats[0].translated}</p>
                         <p className={classes.paragraph}>sijainti</p>
                         <ul className={classes.paragraph}>{record.buildings.map(building => (
                             <li className={classes.paragraph}>{building.translated}</li>

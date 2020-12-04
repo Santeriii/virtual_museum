@@ -20,8 +20,8 @@ const useStyles = makeStyles(theme => ({
     },
     link: {
         textDecoration: 'none',
-        color: 'black',
-        textShadow: '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
+        color: 'white',
+        textShadow: '1px 1px 2px black, 0 0 25px black, 0 0 10px black',
         fontSize: '240%',
         fontFamily: 'sans',
         marginRight: '1%',
