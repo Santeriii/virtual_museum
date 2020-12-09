@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
         width: '150%',
+        maxWidth: '100%',
         marginTop: '2%',
         boxShadow: '3px 3px 8px #000000',
     },
@@ -48,7 +49,7 @@ const Note = ({ note, toggleImportance }) => {
 
     return (
         <Card className={classes.root}>
-            <CardContent>
+            <CardContent className={classes.CardContent}>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     käyttäjältä {note.user && note.user.username}
                 </Typography>
