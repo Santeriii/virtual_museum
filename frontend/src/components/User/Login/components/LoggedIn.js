@@ -34,11 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const logout = () => {
-    window.localStorage.removeItem('loggedNoteappUser')
-}
-
-export default function LoggedIn() {
+export default function LoggedIn({ logout }) {
     const classes = useStyles()
 
     const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedNoteappUser'))

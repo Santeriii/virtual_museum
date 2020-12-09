@@ -43,6 +43,11 @@ const App = () => {
     }
   }
 
+  const handleLogout = async () => {
+    window.localStorage.removeItem('loggedNoteappUser')
+    setUser(null)
+  }
+
   const loginForm = () => (
       <LoginForm
         username={username}
@@ -54,7 +59,9 @@ const App = () => {
   )
 
   const loggedIn = () => (
-    <LoggedIn/>
+    <LoggedIn
+      logout={handleLogout}
+    />
   )
 
   return (
