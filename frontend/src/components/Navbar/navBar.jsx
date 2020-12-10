@@ -51,6 +51,15 @@ const useStyles = makeStyles(theme => ({
         display: 'block',
         textAlign: 'left',
     },
+    mobileButton_text: {
+        textDecoration: 'none',
+        color: 'black',
+        textShadow: '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
+        fontSize: '80%',
+        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontWeight: 'bold',
+        letterSpacing: '1px',
+    },
 }))
 
 export default function Navbar() {
@@ -120,7 +129,7 @@ export default function Navbar() {
                         <Button
                             data-cy="museumNav"
                             color="inherit"
-                            className={classes.button_text}>
+                            className={classes.mobileButton_text}>
                             Museo
                         </Button>
                     </Link>
@@ -129,7 +138,7 @@ export default function Navbar() {
                         <Button
                             data-cy="forumNav"
                             color="inherit"
-                            className={classes.button_text}>
+                            className={classes.mobileButton_text}>
                             Foorumi
                         </Button>
                     </Link>
@@ -138,7 +147,7 @@ export default function Navbar() {
                         <Button
                             data-cy="loginNav"
                             color="inherit"
-                            className={classes.button_text}>
+                            className={classes.mobileButton_text}>
                             Kirjaudu
                         </Button>
                     </Link>
@@ -147,7 +156,7 @@ export default function Navbar() {
                         <Button
                             data-cy="contacsNav"
                             color="inherit"
-                            className={classes.button_text}>
+                            className={classes.mobileButton_text}>
                             Yhteystiedot
                         </Button>
                     </Link>
