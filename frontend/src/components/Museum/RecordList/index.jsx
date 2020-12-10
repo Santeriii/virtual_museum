@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
+import { useMediaQuery } from 'react-responsive'
 
 const useStyles = makeStyles(theme => ({
     paragraph: {
@@ -57,13 +58,29 @@ const useStyles = makeStyles(theme => ({
         }
       }
     },
+    mobileText: {
+        textTransform: 'uppercase',
+        fontFamily: 'verdana',
+        fontSize: '60%',
+        fontWeight: '700',
+        color: '#f5f5f5',
+        letterSpacing: '1px',
+        textShadow: '1px 1px 1px #919191,1px 1px 1px #919191,1px 2px 1px #919191,1px 3px 1px #919191,1px 4px 1px #919191,1px 5px 1px #919191,1px 6px 1px #919191,1px 7px 1px #919191,1px 8px 1px #919191,1px 9px 1px #919191,1px 16px 5px rgba(16,16,16,0.4),1px 20px 9px rgba(16,16,16,0.2),1px 23px 32px rgba(16,16,16,0.2),1px 27px 57px rgba(16,16,16,0.4)',
+    },
+    mobileParagraph: {
+        fontSize: '70%',
+        fontFamily: 'Arvo',
+        textShadow: '2px 2px 4px #000000',
+    },
 }))
     
 
 export default function RecordList({ records }) {
     const classes = useStyles()
+    const isBigScreen = useMediaQuery({ query: '(min-width: 701px)' })
 
     return (
+        isBigScreen ? (
         <div>
             {records && 
                 <>
@@ -96,5 +113,41 @@ export default function RecordList({ records }) {
                 </>
             }
         </div>
+        )
+        :
+        (
+            <div>
+                {records && 
+                    <>
+                    {records.resultCount > 0 && 
+                    <>
+                        {records.records.map(record => (
+                            <>
+                            <p className={classes.mobileText}>{record.title}</p>
+                            <p className={classes.mobileParagraph}>tyyppi : {record.formats[0].translated}</p>
+                            <p className={classes.mobileParagraph}>sijainti</p>
+                            <ul className={classes.mobileParagraph}>{record.buildings.map(building => (
+                                <li className={classes.mobileParagraph}>{building.translated}</li>
+                            ))}
+                            </ul>
+                            {record.languages.length > 0 &&
+                                <>
+                                <p className={classes.mobileParagraph}>kielet</p>
+                                <ul className={classes.mobileParagraph}>{record.languages.map(lang => (
+                                    <li className={classes.mobileParagraph}>{lang}</li>
+                                ))}
+                                </ul>
+                                </>
+                            }
+                            <Divider className={classes.divider}/>
+                            </>
+                        ))}
+                    </>}
+                    {records.resultCount < 1 &&
+                    <p className={classes.mobileParagraph}>Ei hakutuloksia</p>}
+                    </>
+                }
+            </div>
+        )
     )
 }

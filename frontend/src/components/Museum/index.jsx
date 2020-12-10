@@ -49,6 +49,17 @@ const useStyles = makeStyles(theme => ({
         boxShadow: '0 15px 10px rgba(0, 0, 0, 0.7)',
         maxWidth: '60%',
     },
+    mobileText_center: {
+        color: 'white',
+        textAlign: 'center',
+        textShadow: '2px 2px 4px #000000',
+        fontSize: '140%',
+    },
+    mobileParagraph: {
+        fontSize: '60%',
+        fontFamily: 'Serif',
+        textShadow: '2px 2px 4px #000000',
+    },
 }))
 
 export default function Contacts() {
@@ -100,10 +111,10 @@ export default function Contacts() {
             }
             {isTabletOrMobile &&
             <h1 className={classes.mobileStyle}>
-                <h1 className={classes.text_center}>Artikkelihaku</h1>
+                <h1 className={classes.mobileText_center}>Artikkelihaku</h1>
                 <div className={classes.search}>
                 <TextField id="filled-basic" label="Hakusana" variant="filled" className={classes.searchField} onChange={handleSearchTermChange}/><button onClick={search} className={classes.boxShadow}><SearchIcon /></button>
-                <h1 className={classes.paragraph}>Voit kohdistaa hakuja Finna.fi:ssä mukana olevien organisaatioiden eli suomalaisten kirjastojen, arkistojen ja museoiden aineistoihin. Esimerkiksi Suomen kansallisbibliografia Fennica ja kansallisdiskografia Viola ovat mukana rajapinnan kautta tarjottavissa aineistoissa. Rajapinnan ylläpidosta ja kehittämisestä vastaa Kansalliskirjaston kirjastoverkkopalvelut. Rajapintaa koskevat tiedustelut ja palaute: finna-posti AT helsinki.fi</h1>
+                <h1 className={classes.mobileParagraph}>Voit kohdistaa hakuja Finna.fi:ssä mukana olevien organisaatioiden eli suomalaisten kirjastojen, arkistojen ja museoiden aineistoihin. Esimerkiksi Suomen kansallisbibliografia Fennica ja kansallisdiskografia Viola ovat mukana rajapinnan kautta tarjottavissa aineistoissa. Rajapinnan ylläpidosta ja kehittämisestä vastaa Kansalliskirjaston kirjastoverkkopalvelut. Rajapintaa koskevat tiedustelut ja palaute: finna-posti AT helsinki.fi</h1>
                 </div>
                 <RecordList
                     records={records}

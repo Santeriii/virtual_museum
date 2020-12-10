@@ -30,8 +30,20 @@ const useStyles = makeStyles(theme => ({
         color: '#ffffff',
         marginTop: '0%',
         boxShadow: '0 15px 10px rgba(0, 0, 0, 0.7)',
-        maxWidth: '60%',
-    }
+        maxWidth: '80%',
+    },
+    mobileText_center: {
+        color: 'white',
+        textAlign: 'center',
+        textShadow: '2px 2px 4px #000000',
+        fontSize: '160%',
+    },
+    mobileParagraph: {
+        fontSize: '70%',
+        fontFamily: 'Serif',
+        textShadow: '2px 2px 4px #000000',
+        width: '100%',
+    },
 }))
 
 export default function Home() {
@@ -73,8 +85,8 @@ export default function Home() {
             }
             {isTabletOrMobile &&
             <h1 className={classes.mobileStyle}>
-                <h1 className={classes.text_center}>Tervetuloa!</h1>
-                <p className={classes.paragraph}>
+                <h1 className={classes.mobileText_center}>Tervetuloa!</h1>
+                <p className={classes.mobileParagraph}>
                     Virtuaalimuseon tarjonnasta löydät sisältöä aina kuvataidekokoelmista
                     muinaisesineisiin. Tarjonta kattaa museot ympäri Suomen. Sisältö on
                     koottu kätevästi yhteen paikkaan, jolloin käyttäjän ei tarvitse
