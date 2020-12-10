@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
 import StarIcon from '@material-ui/icons/Star'
+import { useMediaQuery } from 'react-responsive'
 
 const useStyles = makeStyles({
     root: {
@@ -31,10 +32,18 @@ const useStyles = makeStyles({
         fontSize: '90%',
         fontWeight: 'bold',
     },
+    mobileRoot: {
+        width: '100%',
+        maxWidth: '100%',
+        marginTop: '2%',
+        boxShadow: '3px 3px 8px #000000',
+    },
 })
 
 const Note = ({ note, toggleImportance }) => {
     const classes = useStyles()
+    const isBigScreen = useMediaQuery({ query: '(min-width: 701px)' })
+
     const label = note.important ? (
         <>
             <StarIcon />
@@ -47,8 +56,27 @@ const Note = ({ note, toggleImportance }) => {
         </>
     )
 
-    return (
+    return isBigScreen ? (
         <Card className={classes.root}>
+            <CardContent className={classes.CardContent}>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    käyttäjältä {note.user && note.user.username}
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    {note.heading}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {note.content}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small" onClick={toggleImportance}>
+                    {label}
+                </Button>
+            </CardActions>
+        </Card>
+    ) : (
+        <Card className={classes.mobileRoot}>
             <CardContent className={classes.CardContent}>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     käyttäjältä {note.user && note.user.username}

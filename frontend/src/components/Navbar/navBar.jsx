@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import { useMediaQuery } from 'react-responsive'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,13 +39,28 @@ const useStyles = makeStyles(theme => ({
         backgroundImage:
             'url("https://cdn.pixabay.com/photo/2018/02/25/00/09/texture-3179529_1280.jpg")',
     },
+    appBarMobile: {
+        backgroundImage:
+            'url("https://cdn.pixabay.com/photo/2018/02/25/00/09/texture-3179529_1280.jpg")',
+        float: 'none',
+        display: 'block',
+        textAlign: 'left',
+    },
+    itemAlignMobile: {
+        float: 'none',
+        display: 'block',
+        textAlign: 'left',
+    },
 }))
 
 export default function Navbar() {
     const classes = useStyles()
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 700px)' })
+    const isBigScreen = useMediaQuery({ query: '(min-width: 701px)' })
 
     return (
         <div className={classes.root}>
+            {isBigScreen && 
             <AppBar position="static" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
@@ -90,6 +106,54 @@ export default function Navbar() {
                     </Link>
                 </Toolbar>
             </AppBar>
+            }
+            {isTabletOrMobile &&
+            <AppBar position="static" className={classes.appBarMobile}>
+                <Toolbar className={classes.itemAlignMobile}>
+                    <Typography variant="h6" className={classes.title}>
+                        <Link to="/" className={classes.link}>
+                            Virtuaalimuseo
+                        </Link>
+                    </Typography>
+
+                    <Link to="/museum" className={classes.link}>
+                        <Button
+                            data-cy="museumNav"
+                            color="inherit"
+                            className={classes.button_text}>
+                            Museo
+                        </Button>
+                    </Link>
+
+                    <Link to="/forum" className={classes.link}>
+                        <Button
+                            data-cy="forumNav"
+                            color="inherit"
+                            className={classes.button_text}>
+                            Foorumi
+                        </Button>
+                    </Link>
+
+                    <Link to="/login" className={classes.link}>
+                        <Button
+                            data-cy="loginNav"
+                            color="inherit"
+                            className={classes.button_text}>
+                            Kirjaudu
+                        </Button>
+                    </Link>
+
+                    <Link to="/contacts" className={classes.link}>
+                        <Button
+                            data-cy="contacsNav"
+                            color="inherit"
+                            className={classes.button_text}>
+                            Yhteystiedot
+                        </Button>
+                    </Link>
+                </Toolbar>
+            </AppBar>
+            }
         </div>
     )
 }
