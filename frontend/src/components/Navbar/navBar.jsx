@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
         color: 'black',
         textShadow: '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white',
         fontSize: '80%',
-        fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+        fontFamily: 'Arvo',
         fontWeight: 'bold',
         letterSpacing: '1px',
     },
