@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Following REST-call methods are supported: GET, POST, PUT & DELETE
+
 In the project directory, you can run:
 
 ### `npm start`
